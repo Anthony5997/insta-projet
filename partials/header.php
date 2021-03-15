@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Norican&family=Playball&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="assets/css/main.css">
     <title>instaCouille</title>
 </head>
@@ -17,21 +20,14 @@
                 <a class="" href="index.php">INSTAGRAM</a>
             </div>
             <div class=" col-sm-4">
-                <div class="input-group rounded">
-                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                    aria-describedby="search-addon" />
-                    <span class="input-group-text" id="search-addon">
-                        <button type="button" class="btn btn-outline-primary">🔍</button>
-                    </span>
-                </div>
             </div>
             <?php  if(empty($_SESSION["connect"])){
             echo '<div class="d-flex justify-content-end col-sm-4">
-                    <button type="button" class="btn btn-primary">Connexion</button>
-                    <button type="button" class="btn btn-light"">inscription</button>
+                  <a href="sign-up.php"><button type="button" class="btn btn-primary">Connexion</button></a>
+                  <a href="sign-in.php"><button type="button" class="btn btn-light"">inscription</button></a>
                 </div>';
             }else{
-                echo"<div class='session-align col-sm-4 topnav'>
+                echo"<div class='col-sm-4 topnav'>
                         <p class="."button-perso".">Salut ". $_SESSION["user"]."</p> 
                         <a href="."process/deco.php".">Déconnexion</a>
                     </div>

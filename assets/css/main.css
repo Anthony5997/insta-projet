@@ -84,3 +84,76 @@
   }
 }
 /************ FIN NAVBAR****************/
+.sign-form{
+    justify-content: center;
+    margin-top: 12px;
+    max-width: 350px;
+    border: 1px solid #dbdbdb;
+    
+}
+
+.style-form{
+    margin: 24px;
+    padding: 10px;
+}
+
+.sign-h1{
+    margin: 22px auto 12px;
+}
+
+.sign-input{
+    margin-top: 20px;
+    background-color: #ffffffa8;
+}
+
+.sign-input-button{
+
+    margin-top: 40px;
+    background-color: #a9d6e5;
+    border: none;
+}
+
+/**Début Form sign-in*/
+.sign{
+    border: 1px solid #dbdbdb;
+    padding: 15px;
+  }
+  .inscription{
+    margin-top: 5vw;
+    display: flex;
+    justify-content: center;
+  }
+  .sign h4{
+    font-family: 'Norican', cursive;
+    text-align: center;
+    font-size: 60px;
+   
+  }
+  .sign h6{
+  
+    text-align: center;
+    color: gray;
+    font-size: 20px;
+  }
+  .btn{
+    background-color: #a9d6e5;
+    border: none;
+    color: white;
+  }
+  .sign p{
+    text-align: center;
+    margin-top: 2vw;
+    color: gray;
+    font-size: 15px;
+  }
+  .connect{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 2vw;
+    border: 1px solid #dbdbdb;
+    padding: 20px;
+    margin-left: 34vw ;
+    margin-right: 34vw ;
+  
+  }
