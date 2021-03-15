@@ -1,12 +1,13 @@
 /* ****************NAVBAR*****************/
 
-* {box-sizing: border-box;}
-
+.nav-style{
+    border-bottom: 1px black solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 .topnav {
   overflow: hidden;
-  background-color: #bd965026;
-  border-radius:0px 0px 10px 10px;
-  transition: background 0.3s linear;
+
 }
 .topnav a {
   float: left;
