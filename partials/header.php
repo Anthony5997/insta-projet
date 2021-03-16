@@ -9,16 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Norican&family=Playball&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="/insta-projet/assets/css/main.css">
     <title>instaCouille</title>
 </head>
 <nav class="nav-style">
     <div class="container">
         <div class="row">
             <div class="topnav col-sm-4">
-                <a class="" href="index.php">INSTAGRAM</a>
-            </div>
+            <h6> <img src="https://img.icons8.com/fluent/40/000000/instagram-new.png"/>Instagram</h6>            </div>
             <div class=" col-sm-4">
             </div>
             <?php  if(empty($_SESSION["connect"])){
@@ -27,14 +25,14 @@
                   <a href="sign-in.php"><button type="button" class="btn btn-light"">inscription</button></a>
                 </div>';
             }else{
-                echo"<div class='col-sm-4 topnav'>
+                echo"<div class='d-flex justify-content-end col-sm-4 topnav'>
                         <p class="."button-perso".">Salut ". $_SESSION["user"]."</p> 
-                        <a href="."process/deco.php".">Déconnexion</a>
+                        <a href="."../process/deco.php".">Déconnexion</a>
                     </div>
         </div>"; 
             } 
             if(isset($_GET["message"])){
-                echo'<div style="padding: 10px; width:25vw; background:green; color:#fff;">
+                echo'<div style="padding: 10px; width:50vw; background:green; color:#fff;">
                         '.$_GET["message"].'
                     </div>';
             }?>
@@ -42,3 +40,4 @@
     </div>
 </nav>
 <body>
+<br><br>

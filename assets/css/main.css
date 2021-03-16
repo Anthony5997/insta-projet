@@ -55,6 +55,10 @@
 .topnav .login-container button:hover {
   background: #ccc;
 }
+.topnav h6{
+  font-family: 'Norican', cursive;
+  font-size: 30px;
+}
 
 .session-align{
   float: right;
@@ -99,6 +103,8 @@
 
 .sign-h1{
     margin: 22px auto 12px;
+    font-family: 'Norican', cursive;
+
 }
 
 .sign-input{
@@ -157,3 +163,86 @@
     margin-right: 34vw ;
   
   }
+
+  /******************IMAGE PROFILE********************/
+
+  .img-profile{
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      
+  }
+ 
+  .image-profil img{
+    width:150px;
+    height: 150px;
+    clip-path:ellipse(50% 50%);
+
+ }
+
+ .tableau h5{
+  color: black;
+  text-align: center;
+  margin-top: 5vw;
+  border: 1px solid #dbdbdb;
+}
+.image-board{
+margin-bottom: 1vw;
+margin-top: 1vw;
+}
+.a-img-txt{
+display:grid; 
+}
+
+/* les enfants se superposent */
+.a-img-txt>*{
+grid-area:1/1/-1/-1; 
+/* raccourci pour grid-row et grid-column */
+}
+.a-img{
+filter:invert(1);
+}
+/* le texte */
+.a-txt{
+display:flex;
+justify-content:center;
+align-items:center;
+color:#fff;
+opacity:0;
+filter:invert(0); /* antibug si effet sur a-img */
+transition:opacity .8s;
+}
+
+/* les couleurs c1 et c2 */
+.c1{
+  background:#2b2a29cc; 
+} 
+  .a-txt:hover{
+opacity:1;
+}
+.a-img-txt:hover .a-img{
+filter:invert(0);
+}
+/* la déco */
+.image-board img{
+
+height: 293px; 
+width: 293px;
+
+}
+a{
+text-decoration:none;
+width: 100%;
+}
+.icon-like-comment{
+height: 293px;
+width: 293px;
+}
+.icon-like-comment img {
+width: 50px;
+height: 50px;
+}
+.a-img-txt{
+height: 293px;
+width: 293px;
+}

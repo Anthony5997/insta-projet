@@ -12,7 +12,6 @@ include("partials/header.php");
             <div class="form-group">
                 <input type="password" class="form-control sign-input" name="passVerif" id="passVerif" placeholder="Mot de passe">
             </div>
-
             <button type="submit" class="btn btn-primary col-sm-12 sign-input-button">Submit</button>
             </form>
       </div>
