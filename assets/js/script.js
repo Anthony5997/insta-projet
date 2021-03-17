@@ -1,7 +1,6 @@
 console.log("ok");
 
 let popupBtn = document.querySelectorAll("[data-popup-ref]");
-let popupContent = popup.querySelector('.popup-content');
 
 popupBtn.forEach(btn =>{
     btn.addEventListener('click', activePopup);

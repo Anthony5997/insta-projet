@@ -4,11 +4,11 @@ if (session_status() != 2) {
     session_start();
 }
 
-$queryGetPhotos = "SELECT * 
+$queryGetPhotos = "SELECT photos.*, users.pseudo 
                     FROM photos 
                     JOIN users 
                     ON photos.idUsers = users.id 
-                    WHERE users.id =".$_SESSION['id']."
+                    WHERE users.id = ?
                     ORDER BY photos.add_date 
                     DESC";
 
@@ -17,17 +17,21 @@ $queryNbrPublication = "SELECT
                         FROM photos 
                         JOIN users 
                         ON photos.idUsers = users.id 
-                        WHERE users.id =".$_SESSION['id'];
+                        WHERE users.id = ?";
 
 
 $getPhotos = $bdd->prepare($queryGetPhotos);
-$getPhotos->execute();
+$getPhotos->execute([
+    $_SESSION['id']
+]);
 $picturesUser = $getPhotos->fetchAll(PDO::FETCH_ASSOC);
 
 
 
 $nbrPubli = $bdd->prepare($queryNbrPublication);
-$nbrPubli->execute();
+$nbrPubli->execute([
+    $_SESSION['id']
+]);
 $resultNbrPubli = $nbrPubli->fetch();
  
 ?>
