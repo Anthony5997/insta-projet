@@ -16,7 +16,8 @@
     <div class="container">
         <div class="row">
             <div class="topnav col-sm-4">
-            <h6> <img src="https://img.icons8.com/fluent/40/000000/instagram-new.png"/>Instagram</h6>            </div>
+            <h6> <img src="https://img.icons8.com/fluent/40/000000/instagram-new.png"/>Instagram</h6>    
+            </div>
             <div class=" col-sm-4">
             </div>
             <?php  if(empty($_SESSION["connect"])){

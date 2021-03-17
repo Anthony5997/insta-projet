@@ -20,6 +20,28 @@ include("top-profile.php");
   </div>
 </div>
 
+<button data-popup-ref="imgPopup">Active modale</button>
+<div class="popup" data-popup-id="imgPopup" >
+    <div class="popup-content">
+      <div class="popup-header">
+      <div class="title">Titre</div>
+        <span class="btn-close" data-dismiss-popup>&times; </span>
+      </div>
+      <div class="popup-body">
+        <h1>OKOKOK MODAL</h1>
+    <div class="col-sm-4 d-flex justify-content-around image-board">
+              <img src="<?=$picture['photo_link']?>"> 
+      </div> 
+      </div>
+      <div class="popup-footer">
+      <button class="btn-close" data-dismiss-popup>Close</button>
+      </div>
+    </div>
+
+</div>
+
+
+
 <?php 
 include("../partials/footer.php");
 ?>
