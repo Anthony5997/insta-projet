@@ -1,4 +1,5 @@
 <?php
+
 include("../partials/header.php");
 require("../partials/sql_connect.php");
 include("process/user-infos.php");
@@ -16,7 +17,6 @@ include("top-profile.php");
               <span id="<?= $picture['id']?>" class="a-txt c1 icon-like-comment"><img id="<?= $picture['id']?>"  src="https://img.icons8.com/metro/26/ffffff/like.png"><img id="<?= $picture['id']?>" src="https://img.icons8.com/material-rounded/24/ffffff/speech-bubble-with-dots.png"></span>
             </a>
           </div> 
-          
       <?php } ?>
   </div>
 </div>
@@ -25,27 +25,41 @@ include("top-profile.php");
     <div class="popup-content">
       <div class="popup-header">
       <div class="title">Photos</div>
-        <span class="btn-close" data-dismiss-popup>&times;</span>
+        <span class="btn-close" data-dismiss-popup></span>
       </div>
-      <div class="popup-body">
+      <div class="popup-body" id="modalRefresh">
         <div class="row">
           <div class="col-sm-8">
-                  <img class="img-modal" src="<?=$picture['photo_link']?>"> 
-          </div> 
+            <img class="img-modal" src="<?=$picture['photo_link']?>"> 
+            <?php $timeStamp = $picture["add_date"];
+            $timeStamp = date( "m/d/Y", strtotime($timeStamp));?>
+            <p>Posté le <?=$timeStamp?></p>
+          </div>
           <div class="col-sm-4 popup-body-comment"> 
-                  COMMENTAIRES
+                    COMMENTAIRES
+            <div class="display-comments">
+                    AFFICHER LES COMMS ICI
+            </div>
+            <div class="comments-area">
+              <form class="form-group" method="post" action="process/insert-comments.php">
+                <input class="form-group" type="text" name="comment" required>
+                <input type="hidden" name="idPhoto" value="<?= $picture['id']?>">
+                <input type="hidden" name="idUser" value="<?= $picture['idUsers']?>">
+                <div class="form-group">
+                  <button id="courgette" class="btn btn-primary text-center" type="submit">Envoyer</button>
+                </div>
+              </form>
+            </div>
+
           </div> 
         </div>
       </div>
       <div class="popup-footer">
-      <button class="btn-close" data-dismiss-popup>Close</button>
+      <button class="btn-info" data-dismiss-popup>Close</button>
       </div>
     </div>
 
 </div>
-
-
-
 <?php 
 include("../partials/footer.php");
 ?>

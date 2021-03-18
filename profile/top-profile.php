@@ -2,7 +2,7 @@
     <div class="row">
         <br><br><br><br>
         <div class="col-sm-4">
-            <img class="image-profil" width="150" height="150" src="/insta-projet/assets/img/jacouille.jpeg">
+            <img class="image-profil" width="150" height="150" src="<?= $picturesUser[0]['photo_link']?>">
         </div>
         <div class="col-sm-8">
             <div class="row">

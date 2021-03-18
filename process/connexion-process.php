@@ -26,11 +26,11 @@ if (isset($_POST['mailVerif']) && !empty($_POST['mailVerif']) && isset($_POST['p
             $_SESSION['connect'] = 1;
             header("Location: ../profile/profile.php?id=".$_SESSION['id']."&message=Connexion réussis.");
         }else{
-            header("Location: ../index.php?message=Identifiants ou mot de passe incorrecte.");
+            header("Location: ../sign-up.php?message=Identifiants ou mot de passe incorrecte.");
         }
     }else{
-        header("Location: ../index.php?message=L'utilisateur est inconnue");
+        header("Location: ../sign-up.php?message=L'utilisateur est inconnue");
     }
 }else{
-    header("Location: ../index.php?message=Veuiller remplir les champs pour vous.");
+    header("Location: ../sign-up.php?message=Veuiller remplir les champs pour vous.");
 }

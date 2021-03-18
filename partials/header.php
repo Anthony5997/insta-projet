@@ -1,4 +1,4 @@
-<?php   session_start(); ?>
+<?php  session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,23 +20,23 @@
             </div>
             <div class=" col-sm-4">
             </div>
-            <?php  if(empty($_SESSION["connect"])){
-            echo '<div class="d-flex justify-content-end col-sm-4">
+            <?php  if(empty($_SESSION["connect"])){?>
+                <div class="d-flex justify-content-end col-sm-4">
                   <a href="sign-up.php"><button type="button" class="btn btn-primary">Connexion</button></a>
-                  <a href="sign-in.php"><button type="button" class="btn btn-light"">inscription</button></a>
-                </div>';
-            }else{
-                echo"<div class='d-flex justify-content-end col-sm-4 topnav'>
-                        <p class="."button-perso".">Salut ". $_SESSION["user"]."</p> 
-                        <a href="."../process/deco.php".">Déconnexion</a>
+                  <a href="sign-in.php"><button type="button" class="btn btn-light">inscription</button></a>
+                </div>
+                <?php }else{ ?>
+                <div class='d-flex justify-content-end col-sm-4 topnav'>
+                        <p class="button-perso">Salut <?= $_SESSION["user"]?></p> 
+                        <a href="../process/deco.php">Déconnexion</a>
                     </div>
-        </div>"; 
-            } 
-            if(isset($_GET["message"])){
-                echo'<div style="padding: 10px; width:50vw; background:green; color:#fff;">
-                        '.$_GET["message"].'
-                    </div>';
-            }?>
+        </div> 
+          <?php  }
+            if(isset($_GET["message"])){ ?>
+                <div style="padding: 10px; width:50vw; background:green; color:#fff;">
+                        <?=$_GET["message"];?>
+                </div>
+          <?php }?>
         </div>
     </div>
 </nav>
