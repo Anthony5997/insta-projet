@@ -12,33 +12,44 @@
     <link rel="stylesheet" href="/insta-projet/assets/css/main.css">
     <title>instaCouille</title>
 </head>
-<nav class="nav-style">
-    <div class="container">
-        <div class="row">
-            <div class="topnav col-sm-4">
-            <h6> <img src="https://img.icons8.com/fluent/40/000000/instagram-new.png"/>Instagram</h6>    
-            </div>
-            <div class=" col-sm-4">
-            </div>
-            <?php  if(empty($_SESSION["connect"])){?>
-                <div class="d-flex justify-content-end col-sm-4">
-                  <a href="sign-up.php"><button type="button" class="btn btn-primary">Connexion</button></a>
-                  <a href="sign-in.php"><button type="button" class="btn btn-light">inscription</button></a>
-                </div>
-                <?php }else{ ?>
-                <div class='d-flex justify-content-end col-sm-4 topnav'>
-                        <p class="button-perso">Salut <?= $_SESSION["user"]?></p> 
-                        <a href="../process/deco.php">Déconnexion</a>
-                    </div>
-        </div> 
-          <?php  }
-            if(isset($_GET["message"])){ ?>
-                <div style="padding: 10px; width:50vw; background:green; color:#fff;">
-                        <?=$_GET["message"];?>
-                </div>
-          <?php }?>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <a class="navbar-brand topnav" href="#"><h6> <img src="https://img.icons8.com/fluent/40/000000/instagram-new.png"/>Instagram</h6> </a>
+      <div class="row">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+
+
+
+        <?php  if(empty($_SESSION["connect"])){ ?>
+           <div class="d-flex justify-content-end col-sm-4">
+                   <a class="nav-link active" aria-current="page" href="sign-up.php">Connexion</a>
+                  </div>
+          <?php  }else{ ?>
+                    <li class='nav-item dropdown'>
+                    <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                        Salut <?=$_SESSION["user"]?></a>
+                       
+                        <ul class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
+                            <li><a class='dropdown-item' href="../process/deco.php">Déconnexion</a></li>
+                            <li><a class='dropdown-item' href='#'></a></li>
+                            <li><a class='dropdown-item' href='../profile/ajouter-photos.php'>Ajouter photos</a></li>
+                         </ul>
+                 </li>     
         </div>
+       <?php     } 
+            if(isset($_GET["message"])){ ?>
+             <div style="padding: 10px; width:20vw; background:gray; color:#fff; margin-right: 10px; text-align: center; border-radius: 20px">
+                      <?= $_GET["message"]?>
+                    </div>
+          <?php  }?>
+      </ul>
+      </div>
     </div>
-</nav>
+  </div>
+</nav> 
 <body>
-<br><br>
+<br><br> 

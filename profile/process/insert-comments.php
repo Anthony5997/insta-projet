@@ -6,7 +6,7 @@ if (session_status() != 2) {
 require("../../partials/sql_connect.php");
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $comment = htmlentities($_POST['comment']); 
+    $comment = htmlentities($_POST['comment-area']); 
     $idPhoto = $_POST['idPhoto'];
     $idUser = $_POST['idUser'];
 
@@ -16,6 +16,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $comment,
         $idPhoto,
         $idUser
-        ));
+    ));
 }
-
+header("Location: ../profile.php?message=Commentaire posté");

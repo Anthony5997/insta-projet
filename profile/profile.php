@@ -1,16 +1,15 @@
 <?php
-
-include("../partials/header.php");
-require("../partials/sql_connect.php");
-include("process/user-infos.php");
-include("top-profile.php");
+  include("../partials/header.php");
+  require("../partials/sql_connect.php");
+  include("process/user-infos.php");
+  include("top-profile.php");
 ?>
 <div class="tableau">
   <h5> <img src="https://img.icons8.com/fluent-systems-regular/24/000000/rubiks-cube.png" /> PUBLICATIONS</h5>
 </div>
 <div class="container container-padding">
   <div class="row">
-  <?php foreach($picturesUser as $picture){?>
+  <?php foreach($picturesUser as $key =>$picture){?>
     <div class="col-sm-4 d-flex justify-content-around image-board">
             <a id="<?= $picture['id']?>" data-popup-ref="imgPopup" class="a-img-txt modalCall">
               <img id="<?= $picture['id']?>" src="<?=$picture['photo_link']?>">
@@ -36,17 +35,17 @@ include("top-profile.php");
             <p>Posté le <?=$timeStamp?></p>
           </div>
           <div class="col-sm-4 popup-body-comment"> 
-                    COMMENTAIRES
-            <div class="display-comments">
-                    AFFICHER LES COMMS ICI
+                 <h3 class="text-center">COMMENTAIRES</h3>
+            <div id="display-comments" class="display-comments"><br>
+              
             </div>
             <div class="comments-area">
               <form class="form-group" method="post" action="process/insert-comments.php">
-                <input class="form-group" type="text" name="comment" required>
-                <input type="hidden" name="idPhoto" value="<?= $picture['id']?>">
-                <input type="hidden" name="idUser" value="<?= $picture['idUsers']?>">
+                <input class="form-group" type="text" id="comment-area" name="comment-area" required>
+                <input type="hidden" name="idPhoto" id="modalFormIdPhoto" >
+                <input type="hidden" name="idUser" value="<?=$picture['idUsers']?>">
                 <div class="form-group">
-                  <button id="courgette" class="btn btn-primary text-center" type="submit">Envoyer</button>
+                  <button id="commentButton" class="btn btn-primary text-center" type="submit">Envoyer</button>
                 </div>
               </form>
             </div>

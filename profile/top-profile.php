@@ -6,6 +6,9 @@
         </div>
         <div class="col-sm-8">
             <div class="row">
+                <div>
+                    <b><?=$_SESSION["user"]?>  <img src="https://img.icons8.com/ultraviolet/20/000000/approval.png"></b>
+                </div>
                 <div class="col-sm-4">
                     <?=$resultNbrPubli[0]?> Publication
                 </div>
@@ -14,24 +17,8 @@
                 </div>
                 <div class="col-sm-4">
                     abonnement
-                </div>
-                <br><br><br><br>
-                <form action="process/upload-img.php" method="post" enctype="multipart/form-data">
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" name="photo" class="custom-file-input" id="fileUpload">
-                    </div>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit">Button</button>
-                    </div>
-                </div>
-            </form>
+                </div>             
+            </div>
         </div>
     </div>
-    
-    <?php /*var_dump("RESULTAT QUERY DE LA PHOTO DE PROFIL =", $picturesUser["photo_link"]);
-            var_dump("INFO DE SESSION =", $_SESSION);
-            var_dump("RESULTAT QUERY NOMBRE DE PUBLICATION =", $resultNbrPubli);*/?>
-
-</div>
 </div>

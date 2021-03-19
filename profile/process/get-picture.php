@@ -2,17 +2,30 @@
 include("../../partials/sql_connect.php");
 $queryGetPhotos = "SELECT * 
                     FROM photos 
-                    JOIN comments 
-                    ON photos.id = comments.idPhoto
+                    WHERE id = ?";
+
+$queryGetComments= "SELECT * 
+                    FROM comments 
                     JOIN users
-                    ON photos.idUsers = users.id
-                    WHERE photos.id = ?
+                    ON comments.idUser = users.id
+                    WHERE comments.idPhoto = ?
                     ORDER BY comments.comment_date ASC";
 
 $getPhoto = $bdd->prepare($queryGetPhotos);
 $getPhoto->execute([
     $_POST['id']
 ]);
-$pictureUser = $getPhoto->fetchAll(PDO::FETCH_ASSOC);
+$pictureUser = $getPhoto->fetch(PDO::FETCH_ASSOC);
 
-echo json_encode($pictureUser);
+
+$getComments = $bdd->prepare($queryGetComments);
+$getComments->execute([
+    $pictureUser['id']
+]);
+$comments = $getComments->fetchAll(PDO::FETCH_ASSOC);
+
+
+$array = [$pictureUser,$comments];
+
+
+echo json_encode($array);

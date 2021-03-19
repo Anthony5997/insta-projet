@@ -35,7 +35,7 @@ popupBtn.forEach(btn =>{
                 popup.classList.remove('active');
             popupContent.classList.remove('active');
             }
-
+           
         }else{
             console.log("exist pas");
         }
