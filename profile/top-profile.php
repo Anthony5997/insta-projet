@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
         <br><br><br><br>
-        <div class="col-sm-4">
-            <img class="image-profil" width="150" height="150" src="<?= $picturesUser[0]['photo_link']?>">
+        <div class="col-sm-4 image-profil">
+            <img class="image-profil" width="150" height="150" src="<?=empty($picturesUser[0]['photo_link']) ? '/insta-projet/assets/img/default-avatar.jpg' : $picturesUser[0]['photo_link']?>">
         </div>
         <div class="col-sm-8">
             <div class="row">

@@ -319,9 +319,7 @@ width: 293px;
   width: 100%;
   background-size: cover;
 }
-.popup-body-comment{
-  border: 1px solid black;
-}
+
 
 .popup-footer{
   height: 10%;
@@ -329,6 +327,11 @@ width: 293px;
   display: flex;
   justify-content: flex-end;
   background-color: aliceblue;
+}
+.btn.btn-primary.text-center{
+  color: white;
+  background-color: gray;
+  margin-top: 1vw;
 }
 
 /********FORM AJOUT ***************/
@@ -353,4 +356,16 @@ width: 293px;
   margin-left: 25vw;
   border-color: black;
   border: 2px solid;
+}
+/*************formulaire******/
+.name{
+  margin-left: 45vw;
+}
+.col-sm-8 p{
+  color: gray;
+  font-size: 12px;
+}
+.image-modal{
+  height: 500px;
+  width: 500px;
 }

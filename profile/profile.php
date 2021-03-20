@@ -28,22 +28,28 @@
       </div>
       <div class="popup-body" id="modalRefresh">
         <div class="row">
-          <div class="col-sm-8">
+        <div class="name">
+         <b><?=$_SESSION["user"]?></b>
+         </div>
+          <div class="col-sm-8 image-modal">
             <img class="img-modal" src="<?=$picture['photo_link']?>"> 
             <?php $timeStamp = $picture["add_date"];
             $timeStamp = date( "m/d/Y", strtotime($timeStamp));?>
-            <p>Posté le <?=$timeStamp?></p>
+            <p>posté le: <?=$timeStamp?></p>
           </div>
+        
           <div class="col-sm-4 popup-body-comment"> 
-                 <h3 class="text-center">COMMENTAIRES</h3>
+                  
+                 <h3 class="text-center">💬</h3>
             <div id="display-comments" class="display-comments"><br>
               
             </div>
+          
             <div class="comments-area">
               <form class="form-group" method="post" action="process/insert-comments.php">
                 <input class="form-group" type="text" id="comment-area" name="comment-area" required>
                 <input type="hidden" name="idPhoto" id="modalFormIdPhoto" >
-                <input type="hidden" name="idUser" value="<?=$picture['idUsers']?>">
+                 <input type="hidden" name="idUser" value="<?=$picture['idUsers']?>">
                 <div class="form-group">
                   <button id="commentButton" class="btn btn-primary text-center" type="submit">Envoyer</button>
                 </div>
