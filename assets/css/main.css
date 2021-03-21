@@ -241,6 +241,20 @@ height: 293px;
 width: 293px;
 
 }
+.image-board-home{
+  margin-bottom: 1vw;
+  margin-top: 1vw;
+  padding: 20px;
+}
+
+.image-board-home a img{
+  height: 400px; 
+  width: 560px;
+  border : solid black 3px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 a{
 text-decoration:none;
 width: 100%;
@@ -256,6 +270,12 @@ height: 50px;
 .a-img-txt{
 height: 293px;
 width: 293px;
+}
+
+.icon-like-comment-home img{
+  width: 100%;
+  height: 100%;
+
 }
 /*****************MODALE POPUP*****************/
 
@@ -358,14 +378,8 @@ width: 293px;
   border: 2px solid;
 }
 /*************formulaire******/
-.name{
-  margin-left: 45vw;
-}
-.col-sm-8 p{
-  color: gray;
-  font-size: 12px;
-}
+
 .image-modal{
   height: 500px;
-  width: 500px;
+  width: 600px;
 }

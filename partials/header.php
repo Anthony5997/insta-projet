@@ -17,7 +17,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <a class="navbar-brand topnav" href="#"><h6> <img src="https://img.icons8.com/fluent/40/000000/instagram-new.png"/>Instagram</h6> </a>
+    <a class="navbar-brand topnav" href=<?=empty($_SESSION['connect']) ? '#' : '/insta-projet/home.php'?>><h6> <img src="https://img.icons8.com/fluent/40/000000/instagram-new.png"/>Instagram</h6> </a>
       <div class="row">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -34,9 +34,9 @@
                         Salut <?=$_SESSION["user"]?></a>
                        
                         <ul class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
-                            <li><a class='dropdown-item' href="../process/deco.php">Déconnexion</a></li>
-                            <li><a class='dropdown-item' href='#'></a></li>
+                            <li><a class='dropdown-item' href='profile/profile.php'>Mon profil</a></li>
                             <li><a class='dropdown-item' href='../profile/ajouter-photos.php'>Ajouter photos</a></li>
+                            <li><a class='dropdown-item' href="/insta-projet/process/deco.php">Déconnexion</a></li>
                          </ul>
                  </li>     
         </div>

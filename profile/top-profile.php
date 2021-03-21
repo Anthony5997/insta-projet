@@ -10,7 +10,7 @@
                     <b><?=$_SESSION["user"]?>  <img src="https://img.icons8.com/ultraviolet/20/000000/approval.png"></b>
                 </div>
                 <div class="col-sm-4">
-                    <?=$resultNbrPubli[0]?> Publication
+                    <?=empty($resultNbrPubli[0]) ? '0' : $resultNbrPubli[0]?> Publication
                 </div>
                 <div class="col-sm-4">
                     Follow
