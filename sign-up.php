@@ -3,7 +3,7 @@ include("partials/header.php");
 ?>
 <div class="container-style">
   <div class="container sign-form">
-      <h1 class="text-center sign-h1">Instagram</h1>
+      <h1 class="text-center sign-h1">Instapasgram</h1>
       <div class="style-form">          
             <form method="post" action="process/connexion-process.php">
             <div class="form-group">

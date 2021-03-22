@@ -10,14 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Norican&family=Playball&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/insta-projet/assets/css/main.css">
-    <title>instaCouille</title>
+    <title>instaPasGram</title>
 </head>
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <a class="navbar-brand topnav" href=<?=empty($_SESSION['connect']) ? '#' : '/insta-projet/home.php'?>><h6> <img src="https://img.icons8.com/fluent/40/000000/instagram-new.png"/>Instagram</h6> </a>
+    <a class="navbar-brand topnav" href=<?=empty($_SESSION['connect']) ? '#' : '/insta-projet/home.php'?>><h6> <img src="https://img.icons8.com/fluent/40/000000/instagram-new.png"/>Instapasgram</h6> </a>
       <div class="row">
       <ul class="navbar-nav">
         <li class="nav-item">

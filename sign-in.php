@@ -3,7 +3,7 @@ include 'partials/header.php';
 ?>
 <div class="inscription">
     <form action="process/sign-in-process.php" method="POST" class="sign">
-       <h4>Instagram</h4> 
+       <h4>Instapasgram</h4> 
         <h6>Inscrivez-vous pour voir les <br>
          photos et vidéos de vos amis.</h6>
         <div class="mb-3 inscription">
