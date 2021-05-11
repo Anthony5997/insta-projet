@@ -13,6 +13,12 @@
                             </div>
                         </li>
                         <?php  } else { ?>
+                    <form class="d-flex">
+                        <input class="form-control m-2" name="search-user" type="search" placeholder="Search" aria-label="Search" id="search-user">
+                    </form>
+                    <div  class="row justify-content-center user-list">
+
+                    </div>
                     <li class='nav-item dropdown'>
                         <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
                             Salut <?= $_SESSION["user"]->getName() ?></a>
@@ -32,7 +38,7 @@
         </ul>
         </div>
     </div>
-    </div>
+    
 </nav>
 
 <body>

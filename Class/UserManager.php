@@ -51,6 +51,13 @@ class UserManager{
         $CharacterStatement->execute();
         return $CharacterStatement->fetch(PDO::FETCH_ASSOC);
 
+       }
+
+       public function getAllUser(){
+        $CharacterStatement = $this->pdo->prepare('SELECT * FROM users');
+        $CharacterStatement->execute();
+        return $listUser = $CharacterStatement->fetchAll(PDO::FETCH_ASSOC);
+
 
        }
 

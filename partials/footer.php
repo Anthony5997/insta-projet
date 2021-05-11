@@ -5,5 +5,6 @@
     <script src="/insta-projet/assets/js/profilPictureScript.js"></script>
     <script src="/insta-projet/assets/js/script.js"></script>
     <script src="/insta-projet/assets/js/ajax-modal.js"></script>
+    <script src="/insta-projet/assets/js/search-asynch.js"></script>
     </body>
 </html>

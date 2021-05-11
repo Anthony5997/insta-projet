@@ -10,7 +10,6 @@ $currentUser = new User($dataUser);
 $allPictures = $picturesManager->getAllPictures();
 $_SESSION['user'] = $currentUser;
 include("../partials/header.php");
-var_dump($_SESSION);
 ?>
         <div class="ajouter">
         <h6> Télécharger votre photo </h6>
