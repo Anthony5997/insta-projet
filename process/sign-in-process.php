@@ -1,23 +1,18 @@
-<?php
-require_once '../partials/sql_connect.php';
-
-if (empty($_POST["pseudo"])) {
-    die("paramètres manquants.");
-    }
-    $salt = "gHk45=)-('$^ùmm";
-    $pwd_crypte = sha1(sha1($_POST['pwd']).$salt);
-
-$insertStatement =$bdd->prepare("
-    INSERT INTO users
-    (pseudo,email,pwd)
-    VALUES
-    (?,?,?)
-");
-$insertStatement->execute([
-    $_POST["pseudo"],
-    $_POST["email"],
-    $pwd_crypte
-]);
-
-header('location:../sign-in.php?message=Your are connected');
+<?php 
+session_start();
+include("../partials/sql_connect.php");
+require("../Class/Autoload.php");
+Autoloader::register();
+if(isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['pass']) && !empty($_POST['pass'])){
+    $user = new User($_POST);
+    $userManager = new UserManager($bdd);
+    if($userManager->userExist($user) === true){
+        $userManager->createUser($user);
+            header("Location: ../profile/profile.php?id=".$user->getId()."&message=Compte crée.");
+        }else{
+            header("Location: ../sign-up.php?message=L'utilisateur existe déjà.");
+        }
+}else{
+    header("Location: ../sign-up.php?message=Veuiller remplir les champs pour vous.");
+}
 ?>

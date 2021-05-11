@@ -1,6 +1,11 @@
 <?php
-session_start();
-require("../../partials/sql_connect.php");
+  require("../../partials/sql_connect.php");
+  require("../../Class/Autoload.php");
+  Autoloader::register();
+    $pictureManager = new PictureManager($bdd);
+    $userManager = new UserManager($bdd);
+    $currentUser = $userManager->getUserById(intval($_POST['id_user']));
+    $currentUser = new User($currentUser);
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
@@ -17,21 +22,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
         if(in_array($filetype, $allowed)){
 
-            if(file_exists("../../assets/img/" . $_FILES["photo"]["name"])){
-                header("Location: ../profile.php?message=".$_FILES["photo"]["name"] . " existe déjà.");
+            if(file_exists("/insta-projet/assets/img/" . $_FILES["photo"]["name"])){
+                header("Location: /insta-projet/profile/ajouter-photos.php?message=".$_FILES["photo"]["name"] . " existe déjà.");
             } else{
                 move_uploaded_file($_FILES["photo"]["tmp_name"], "../../assets/img/" . $_FILES["photo"]["name"]);
                 $path = "/insta-projet/assets/img/". $_FILES['photo']['name'];
-                $addImg = $bdd->prepare("INSERT INTO photos(photo_link, idUsers)
-                VALUE(?, ?)");
-                $addImg->execute([
-                    $path,
-                    $_SESSION['id']
-                    ]);
+                $picture = new Picture(["photo_link" => $path, "id_user"=>$currentUser->getid()]);
+                $pictureManager->createPhotoLink($picture);
                 } 
-                header("Location: ../profile.php?message=Votre fichier a été téléchargé avec succès.");
+                header("Location: /insta-projet/profile/profile.php?message=Votre fichier a été téléchargé avec succès.");
         } else{
-            header("Location: ../profile.php?message=Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer."); 
+            header("Location: /insta-projet/profile/ajouter-photos.php?message=Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer."); 
         }
     } else{
         echo "Error: " . $_FILES["photo"]["error"];
