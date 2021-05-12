@@ -1,0 +1,73 @@
+.button{
+    h6{
+        text-align: center;
+        border:1px solid gray;
+        border-radius: 10px;
+        box-shadow: 12px 12px 2px 1px #827d7f;
+    }
+    #togg1{
+    border: none;
+    }
+
+}
+.image{
+    height: 300px;
+}
+.cardprofile{
+    height: 100vh;
+    margin-top: 2vw;
+    font-family: 'Quicksand', sans-serif;
+  }
+  .card{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-color: gray;
+    width: 318;
+    height: 250px;
+    padding: 5px;
+
+    border-radius:7px;
+
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.3);
+    .img{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 195px;
+
+      img{
+        height: 120px;
+         border-radius:100%;
+         box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+        }
+    }
+
+    .info{
+       display:flex;
+       flex-direction: column;
+       height: 150px;
+       text-align: center;
+      .name{font-size: 30px;}
+
+    }
+
+    .button2{
+      background-color:#468faf;
+      text-align: center;
+      font-size: 17px;
+      border-radius:10px;
+      color: white;
+      margin-top: 3px;
+      border-color: aliceblue;
+      button{
+        all: unset;
+        padding: 0;
+        width:49%;
+        transition: all 0.2s;
+        cursor:pointer;
+        &:hover{ font-size: 19px;}
+      }
+    }
+  }
