@@ -8,6 +8,7 @@ class User{
     private string $pass;
     private  string $email;
     private string $created_at;
+    private $profile_picture;
 
     /*Methode*/
 
@@ -53,6 +54,9 @@ class User{
     public function getCreated_at(){
         return $this->created_at;
     }
+    public function getProfile_picture(){
+        return $this->profile_picture;
+    }
 
     /*SETTER*/ 
 
@@ -78,5 +82,9 @@ class User{
 
     public function setCreated_at($created_at){
         $this->created_at = $created_at;
+    }
+
+    public function setProfile_picture($profile_picture){
+        $this->profile_picture = $profile_picture;
     }
 }

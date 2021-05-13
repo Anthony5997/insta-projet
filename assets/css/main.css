@@ -6009,7 +6009,6 @@ textarea.form-control-lg {
 }
 
 .cardprofile {
-  height: 100vh;
   margin-top: 2vw;
   font-family: "Quicksand", sans-serif;
 }
@@ -6392,6 +6391,7 @@ a {
 }
 
 .popup-content {
+  box-sizing: border-box;
   position: fixed;
   background-color: white;
   left: 50%;
@@ -6439,6 +6439,11 @@ a {
   padding-right: 25px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.comment-list{
+  max-height: 400px;
+  overflow: auto;
 }
 
 .inner-picture {

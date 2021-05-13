@@ -83,6 +83,13 @@ class PictureManager
       return $picturesUser = $pictureStatement->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  public function getPictureById($id){
+    $pictureStatement = $this->pdo->prepare("SELECT * FROM photos WHERE id =:id");
+    $pictureStatement->bindValue("id", $id);
+    $pictureStatement->execute();
+    return $pictureStatement->fetch(PDO::FETCH_ASSOC);
+  }
+
   public function getAllPictures(){
     $pictureStatement = $this->pdo->prepare("SELECT * FROM photos  ORDER BY photos.add_date 
     DESC");;

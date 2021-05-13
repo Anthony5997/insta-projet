@@ -22,7 +22,7 @@ include("../partials/header.php");
                         <input type="hidden" name="id_user" value="<?=$currentUser->getId()?>" id="id_user">
                     </div>
                     <div class="custom-file">
-                        <input type="hidden" name="add-picture" value="<?=$currentUser->getId()?>" id="id_user">
+                        <input type="hidden" name="profil-picture" value="<?=$currentUser->getId()?>" id="id_user">
                     </div>
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="submit"><img src="https://img.icons8.com/material-sharp/24/000000/download--v2.png"/></button>

@@ -1,21 +1,11 @@
 <?php
-if (session_status() != 2) {
-    
-    session_start();
-}
+
 require("../../partials/sql_connect.php");
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+require("../../Class/Autoload.php");
+Autoloader::register();
+$visitedMail = $_GET['mail'];
+$comment = new Comment($_POST);
+$commentManager = new CommentManager($bdd);
+$commentManager->createComment($comment);
 
-    $comment = htmlentities($_POST['comment-area']); 
-    $idPhoto = $_POST['idPhoto'];
-    $idUser = $_POST['idUser'];
-
-    $newComment = $bdd->prepare('INSERT INTO comments(content, idPhoto, idUser)
-                                VALUES(?, ?, ?)');
-    $newComment->execute(array(
-        $comment,
-        $idPhoto,
-        $idUser
-    ));
-}
-header("Location: ../profile.php?message=Commentaire posté");
+header("Location: ../profile-user.php?message=Commentaire posté&mail=".$visitedMail);

@@ -27,10 +27,9 @@ class UserManager{
 
     public function createProfilPicture(Picture $picture)
     { 
-      $insertPhotoLink = $this->pdo->prepare('INSERT INTO photos(photo_link,idUsers) 
-     VALUES(:photo_link, :id_users)');
+      $insertPhotoLink = $this->pdo->prepare('INSERT INTO users(profile_picture) 
+     VALUES(:photo_link)');
       $insertPhotoLink->bindValue(':photo_link', $picture->getPhoto_Link(),PDO::PARAM_STR);
-      $insertPhotoLink->bindValue(':id_users', $picture->getId_user(), PDO::PARAM_INT);
       $insertPhotoLink->execute();
       }
 
@@ -65,9 +64,12 @@ class UserManager{
 
 
     public function updateUser(User $user){
-        $CharacterStatement = $this->pdo->prepare('UPDATE users SET pseudo= :pseudo, pass=:pass WHERE id=:id');
-        $CharacterStatement->bindValue("pseudo", $user->getName(), PDO::PARAM_STR);
+        $CharacterStatement = $this->pdo->prepare('UPDATE users SET name= :name, pass=:pass, email=:email, created_at=:created_at, profile_picture =:profile_picture WHERE id=:id');
+        $CharacterStatement->bindValue("name", $user->getName(), PDO::PARAM_STR);
         $CharacterStatement->bindValue("pass", $user->getPass(), PDO::PARAM_STR);
+        $CharacterStatement->bindValue("email", $user->getEmail(), PDO::PARAM_STR);
+        $CharacterStatement->bindValue("created_at", $user->getCreated_at(), PDO::PARAM_STR);
+        $CharacterStatement->bindValue("profile_picture", $user->getProfile_picture(), PDO::PARAM_STR);
         $CharacterStatement->bindValue("id", $user->getId(), PDO::PARAM_INT);
         $CharacterStatement->execute();
     }
@@ -96,13 +98,13 @@ class UserManager{
         COUNT(`photo_link`) 
         FROM photos 
         JOIN users 
-        ON photos.idUsers = users.id 
+        ON photos.id_user = users.id 
         WHERE users.id = ?");
 
         $CharacterStatement->execute([
             $user->getId()
         ]);
-        return $publicationNumber= $CharacterStatement->fetch(PDO::FETCH_ASSOC);
+        return $publicationNumber= $CharacterStatement->fetch();
 
     }
     

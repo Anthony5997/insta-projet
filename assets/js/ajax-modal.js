@@ -1,30 +1,28 @@
 let modals = document.querySelectorAll(".modalCall");
-let courgetteBouton = document.querySelector("#courgette");
+console.log(modals);
 modals.forEach(modal => {
     modal.addEventListener('click', function(event){
         let idPicture = event.target.getAttribute("id");
+        console.log(idPicture)
         let formData = new FormData();
         formData.append('id', idPicture);
-        fetch('process/get-picture.php', {
+        fetch('/insta-projet/profile/modal.php', {
             method:'post',
             body: formData
         }).then((Response)=>{
             return Response.json();
         }).then((data)=>{
-            console.log(data[1]);
-            
-            
-            document.querySelector(".img-modal").setAttribute("src", data[0].photo_link);
-            
-            //document.querySelector('.display-comments').innerHTML = ''
-            if (!data[1].length) {
-                console.log('ppl');
-                document.querySelector('.display-comments').innerHTML = ""
-            }
-            data[1].forEach(element => {
-                document.querySelector('.display-comments').innerHTML += `<p> ${element.pseudo} - ${element.content}</p> `
-            });
-            document.querySelector('#modalFormIdPhoto').value = data[0].id
+            console.log("control",data);
+
+            document.querySelector('.inner-picture').setAttribute('src', data.picture.photo_link);  
+            document.querySelector('.profil-picture-modal').setAttribute('src', data.user.profile_picture);  
+            document.querySelector('.form-modal').setAttribute('action', "/insta-projet/profile/process/insert-comments.php?mail="+data.user.email); 
+            console.log("control selector", document.querySelector('.id-dynamique').value = data.picture.id);
+            let commentZone =  document.querySelector(".comment-list");
+            commentZone.innerHTML = ""
+            data.comment.forEach(com => {
+               commentZone.innerHTML += "<h5> Id "+com.id_user_comment+" : </h5>"+"<p>"+com.content+"</p>"+"<p><i>"+com.comment_date+"<i></p>"
+           })
         })
     })
 })

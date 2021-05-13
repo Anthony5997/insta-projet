@@ -18,7 +18,6 @@ var_dump($_SESSION);
       <h6>Suggestion pour vous
         <button id="togg1"><img src="https://img.icons8.com/officexs/16/000000/expand-arrow.png" /></button>
       </h6>
-      <!-- <button id="togg2">Cliquez-moi !</button> -->
       <div class="container cardprofile" id="d1">
         <div class="row">
           <div class="col-md-6 col-lg-4">

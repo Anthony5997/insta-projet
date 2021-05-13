@@ -24,8 +24,9 @@ function search(results){
                 console.log(result);
 
                 divUser.innerHTML += `
-                    <div class="d-flex ">
+                    <div class="d-flex">
                         <p> ${result.name}</p>
+                        <a href="/insta-projet/profile/profile-user.php?mail=${result.email}">Profil</a>
                     </div>`
             }
         });

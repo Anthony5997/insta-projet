@@ -375,6 +375,11 @@ body{
     padding-right: 25px;
     padding-top: 10px;
     padding-bottom: 10px;
+
+    .comment-list{
+      max-height: 400px;
+      overflow: auto;
+    }
   
   }
   .inner-picture{

@@ -17,48 +17,60 @@ include("top-profile.php");
 </div>
 <div class="container container-padding">
   <div class="row">
-  <?php foreach($allPictures as $picture){?>
-  <?php 
-  $picture = new Picture($picture);?>
-    <div class="col-sm-4 d-flex image-board">
-            <a id="<?= $picture->getId()?>" data-popup-ref="imgPopup" class="a-img-txt modalCall">
-              <img id="<?= $picture->getId()?>" src="<?=$picture->getPhoto_link()?>">
-              <span id="<?= $picture->getId()?>" class="a-txt c1 icon-like-comment"><img id="<?= $picture->getId()?>"  src="https://img.icons8.com/metro/26/ffffff/like.png"><img id="<?= $picture->getId()?>" src="https://img.icons8.com/material-rounded/24/ffffff/speech-bubble-with-dots.png"></span>
-            </a>
-          </div> 
-      <?php } ?>
+    <?php foreach ($allPictures as $picture) { ?>
+      <?php
+      $picture = new Picture($picture); ?>
+      <div class="col-sm-4 d-flex image-board ">
+        <a id="<?= $picture->getId() ?>" data-popup-ref="imgPopup" class="a-img-txt modalCall">
+          <img id="<?= $picture->getId() ?>" class="current-picture" src="<?= $picture->getPhoto_link() ?>">
+          <span id="<?= $picture->getId() ?>" class="a-txt c1 icon-like-comment"><img id="<?= $picture->getId() ?>" src="https://img.icons8.com/metro/26/ffffff/like.png"><img id="<?= $picture->getId() ?>" src="https://img.icons8.com/material-rounded/24/ffffff/speech-bubble-with-dots.png"></span>
+        </a>
+      </div>
+    <?php } ?>
   </div>
 </div>
 
 <!-- MODAL -->
-<div class="popup" data-popup-id="imgPopup" >
-    <div class="popup-content">
-      <div class="popup-body" id="modalRefresh">
-        <div class="d-flex flex-row-reverse">
-            <span class="btn-close" data-dismiss-popup></span>
+<div class="popup" data-popup-id="imgPopup">
+  <div class="popup-content">
+
+
+    <div class="popup-body" id="modalRefresh">
+      <div class="d-flex flex-row-reverse">
+        <span class="btn-close" data-dismiss-popup></span>
+      </div>
+      <div class="row">
+        <div class="col-7">
+          <div class="modal-picture">
+
+
+            <img class="inner-picture" src="<?= $picture->getPhoto_link() ?>">
+          </div>
         </div>
-        <div class="row">
-          <div class="col-7">
-            <div class="modal-picture">
-              <img  class="inner-picture" src="/insta-projet/assets/img/pic1.png">
-
-
+        <div class="col-4">
+          <div class="modal-comment">
+            <img class="profil-picture-modal" src="">
+            <p class="p-modal"></p>
+            <h1></h1>
+            <div class="d-flex flex-column">
+            <div class="comment-list form-control">
+            
+            </div>
+            <div class="form-comment d-flex ">
+              <form class="form-control align-self-end">
+                <input class="form-control" type="text" name="message" placeholder="Laissez un commentaire">
+                <button class="btn btn-primary" type="submit" >Posté</button>
+              </form>
             </div>
           </div>
-          <div class="col-4"> 
-            <div class="modal-comment">
-              <img class="profil-picture-modal"src="/insta-projet/assets/img/jacouille.jpeg">
-              <p>Name</p>
-              <h1></h1>
-
-            </div>
-          </div> 
-        </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 </div>
 <!-- FIN MODAL -->
-<?php 
+<?php
 include("../partials/footer.php");
 ?>
