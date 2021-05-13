@@ -19,6 +19,7 @@ function search(results){
         searchUser = event.target.value
         
         divUser.innerHTML = ''
+        if(searchUser != ""){
         results.forEach(result => {
             if (result.name.includes(searchUser) ) {
                 console.log(result);
@@ -30,5 +31,8 @@ function search(results){
                     </div>`
             }
         });
+    }else{
+        divUser.innerHTML = ""
+    }
     });
 }
