@@ -53,16 +53,20 @@ include("top-profile.php");
             <p class="p-modal"></p>
             <h1></h1>
             <div class="d-flex flex-column">
-            <div class="comment-list form-control">
+              <div class="form-comment form-control">
+              <div class="comment-list form-control">
             
-            </div>
-            <div class="form-comment d-flex ">
-              <form class="form-control align-self-end">
-                <input class="form-control" type="text" name="message" placeholder="Laissez un commentaire">
-                <button class="btn btn-primary" type="submit" >Posté</button>
-              </form>
-            </div>
-          </div>
+              </div>
+                <div class="form-comment d-flex ">
+                  <form class="form-control align-self-end form-modal" method="post" action="/insta-projet/profile/process/insert-comments.php?">
+                    <input class="form-control" id="content"type="text" name="content" placeholder="Laissez un commentaire">
+                    <input type="hidden" id="id_user_comment" name="id_user_comment" value="<?= $currentUser->getId();?>">
+                    <input class="id-dynamique" id="id_picture" type="hidden" name="id_picture" value="">
+                    <button class="btn btn-primary sendComment" >Posté</button>
+                  </form>
+                </div>
+                </div>
+              </div>
           </div>
         </div>
       </div>

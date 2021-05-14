@@ -21,7 +21,7 @@ modals.forEach(modal => {
             let commentZone =  document.querySelector(".comment-list");
             commentZone.innerHTML = ""
             data.comment.forEach(com => {
-               commentZone.innerHTML += "<h5> Id "+com.id_user_comment+" : </h5>"+"<p>"+com.content+"</p>"+"<p><i>"+com.comment_date+"<i></p>"
+               commentZone.innerHTML += "<div class='comment-box'><span><a href="+"/insta-projet/profile/profile-user.php?mail="+com.email+"><img class='comment-profil-picture' src="+com.profile_picture+">  "+com.name+" :</a></span>"+"<p> "+com.content+"</p>"+"<p><i>"+com.comment_date+"<i></p></div>"
            })
         })
     })

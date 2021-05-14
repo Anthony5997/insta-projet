@@ -6,7 +6,7 @@ if(isset($_POST['id'])):
     $manager = new PictureManager($bdd);
     $commentManager = new CommentManager($bdd);
     $arrayPicture = $manager->getPictureById($_POST['id']);
-    $arrayComment = $commentManager->getCommentByPicture($_POST['id']);
+    $arrayComment = $commentManager->getCommentAndUserInfoByPicture($_POST['id']);
     $userManager = new UserManager($bdd);
     $arrayUser = $userManager->getUserById(intval($arrayPicture['id_user']));
     if ($arrayPicture) {

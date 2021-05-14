@@ -12,6 +12,9 @@ $_SESSION['user'] = $currentUser;
 $userVisitedInfo = $userManager->getUserByMail($visitedMail);
 $userVisited = new User($userVisitedInfo);
 $allPictures = $picturesManager->getPictureByUser($userVisited);
+if($currentUser->getEmail() === $visitedMail){
+  header("Location: /insta-projet/profile/profile.php");
+}
 include("../partials/header.php");
 include("top-profile-user.php");
 ?>
@@ -50,10 +53,11 @@ include("top-profile-user.php");
           </div>
           <div class="col-4"> 
             <div class="modal-comment">
-              <img class="profil-picture-modal"src="/insta-projet/assets/img/jacouille.jpeg">
+              <img class="profil-picture-modal"src="">
               <p class="p-modal"></p>
               <h1></h1>
               <div class="d-flex flex-column">
+              <div class="form-comment form-control">
               <div class="comment-list form-control">
             
               </div>
@@ -64,6 +68,7 @@ include("top-profile-user.php");
                     <input class="id-dynamique" id="id_picture" type="hidden" name="id_picture" value="">
                     <button class="btn btn-primary sendComment" >Posté</button>
                   </form>
+                </div>
                 </div>
               </div>
             </div>

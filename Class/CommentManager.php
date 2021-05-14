@@ -56,7 +56,7 @@ class CommentManager
     $commentsByPicture = [];
     
     $getAllCommentsBypicture = $this->pdo->prepare('SELECT * FROM  comments
-    WHERE id_picture = :id_picture ');
+    WHERE id_picture = :id_picture');
     $getAllCommentsBypicture->bindValue(':id_picture', $idPicture ,PDO::PARAM_INT);
     $getAllCommentsBypicture->execute();
     
@@ -90,6 +90,24 @@ class CommentManager
     DESC");;
     $pictureStatement->execute();
     return $allPictureUser = $pictureStatement->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function getCommentAndUserInfoByPicture($idPicture)
+  {
+    
+    $getAllCommentsBypicture = $this->pdo->prepare('SELECT comments.*, users.name, users.email, users.profile_picture
+    FROM comments 
+    JOIN users 
+    ON comments.id_user_comment = users.id 
+    JOIN photos 
+    ON photos.id_user = users.id 
+    WHERE id_picture = :id_picture 
+    GROUP BY comments.comment_date 
+    DESC');
+    $getAllCommentsBypicture->bindValue(':id_picture', $idPicture ,PDO::PARAM_INT);
+    $getAllCommentsBypicture->execute();
+    
+    return $getAllCommentsBypicture->fetchAll(PDO::FETCH_ASSOC);
   }
 
 }

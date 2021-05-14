@@ -6391,7 +6391,6 @@ a {
 }
 
 .popup-content {
-  box-sizing: border-box;
   position: fixed;
   background-color: white;
   left: 50%;
@@ -6402,6 +6401,7 @@ a {
   width: 85%;
   border: solid 1px black;
   display: flex;
+  border-radius: 10px;
   opacity: 0;
 }
 
@@ -6440,8 +6440,7 @@ a {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
-.comment-list{
+.modal-comment .comment-list {
   max-height: 400px;
   overflow: auto;
 }
@@ -6454,6 +6453,26 @@ a {
 .profil-picture-modal {
   width: 50px;
   height: 50px;
+}
+
+.inner-picture {
+  width: 100%;
+  height: 100%;
+}
+
+.comment-box {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: solid 1px rgba(0, 0, 0, 0.137);
+  border-radius: 5px;
+}
+.comment-box .comment-profil-picture {
+  width: 35px;
+  height: 35px;
+  border-radius: 51%;
+}
+.comment-box p {
+  margin: 0px;
 }
 
 /********FORM AJOUT ***************/
