@@ -4,10 +4,8 @@ include("../partials/sql_connect.php");
 require("../Class/Autoload.php");
 Autoloader::register();
 $userManager = new UserManager($bdd);
-$picturesManager = new PictureManager($bdd);
 $dataUser = $userManager->getUserByMail($_SESSION['userMail']);
 $currentUser = new User($dataUser);
-$allPictures = $picturesManager->getAllPictures();
 $_SESSION['user'] = $currentUser;
 include("../partials/header.php");
 ?>

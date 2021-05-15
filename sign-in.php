@@ -28,7 +28,7 @@ include 'partials/header.php';
            <b> Politique d’utilisation des <br> cookies.</b></p>
 </div>
 <div class="connect">
-    Vous avez un compte ?<a href="process/connexion-process.php" >Connectez-vous</a>
+    Vous avez un compte ?<a href="/insta-projet/sign-up.php" >Connectez-vous</a>
 </div>
 
 <?php

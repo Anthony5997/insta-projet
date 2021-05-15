@@ -5,6 +5,7 @@ include("../partials/sql_connect.php");
 Autoloader::register();
 $userManager = new UserManager($bdd);
 $picturesManager = new PictureManager($bdd);
+$followManager = new FollowManager($bdd);
 $dataUser = $userManager->getUserByMail($_SESSION['userMail']);
 $currentUser = new User($dataUser);
 $allPictures = $picturesManager->getPictureByUser($currentUser);

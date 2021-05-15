@@ -17,6 +17,7 @@ modals.forEach(modal => {
             document.querySelector('.inner-picture').setAttribute('src', data.picture.photo_link);  
             document.querySelector('.profil-picture-modal').setAttribute('src', data.user.profile_picture);  
             document.querySelector('.form-modal').setAttribute('action', "/insta-projet/profile/process/insert-comments.php?mail="+data.user.email); 
+            document.querySelector('.p-modal').innerHTML = data.user.name
             console.log("control selector", document.querySelector('.id-dynamique').value = data.picture.id);
             let commentZone =  document.querySelector(".comment-list");
             commentZone.innerHTML = ""

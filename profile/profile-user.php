@@ -6,12 +6,14 @@ Autoloader::register();
 $visitedMail = $_GET['mail'];
 $userManager = new UserManager($bdd);
 $picturesManager = new PictureManager($bdd);
+$followManager = new FollowManager($bdd);
 $dataUser = $userManager->getUserByMail($_SESSION['userMail']);
 $currentUser = new User($dataUser);
 $_SESSION['user'] = $currentUser;
 $userVisitedInfo = $userManager->getUserByMail($visitedMail);
 $userVisited = new User($userVisitedInfo);
 $allPictures = $picturesManager->getPictureByUser($userVisited);
+$followStatus = $followManager->checkFollow($currentUser, $userVisited);
 if($currentUser->getEmail() === $visitedMail){
   header("Location: /insta-projet/profile/profile.php");
 }
@@ -21,6 +23,9 @@ include("top-profile-user.php");
 <div class="tableau">
   <h5> <img src="https://img.icons8.com/fluent-systems-regular/24/000000/rubiks-cube.png" /> PUBLICATIONS</h5>
 </div>
+<?php if($userVisited->getPrivate_account() === true && $followStatus === false){?>
+  <p class="lead text-center mt-5">Cet utilisateur à un compte privé. Pour accéder à ces publications, vous devez le suivre.</p>
+<?php }else{?>
 <div class="container container-padding">
   <div class="row">
   <?php foreach($allPictures as $picture){?>
@@ -81,4 +86,5 @@ include("top-profile-user.php");
 <!-- FIN MODAL -->
 <?php 
 include("../partials/footer.php");
+}
 ?>

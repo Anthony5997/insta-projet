@@ -13,11 +13,16 @@
                     <?= empty($userManager->publicationCounter($currentUser)[0]) ? '0' : $userManager->publicationCounter($currentUser)[0] ?> Publication
                 </div>
                 <div class="col-sm-4">
-                    Follow
+                    <span><?=$followManager->followerCounter($currentUser)['COUNT(id_user_follower)']?>  follow</span>
                 </div>
                 <div class="col-sm-4">
-                    abonnement
+                    <span><?=$followManager->followingCounter($currentUser)['COUNT(id_user_followed)']?>  abonnement</span>
                 </div>
+                <br>
+                <br>
+                <form method="post" action="/insta-projet/profile/process/private-account-process.php?mail=<?=$currentUser->getEmail();?>">
+               <span>Visibilitée : <button type="submit"><?php echo $currentUser->getPrivate_account()===false ? '👁' : '🕶️';?></button></span>
+                </form>
             </div>
         </div>
     </div>

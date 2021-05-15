@@ -24,6 +24,7 @@
                             Salut <?= $_SESSION["user"]->getName() ?></a>
                         <ul class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
                             <li><a class='dropdown-item' href='/insta-projet/profile/profile.php'>Mon profil</a></li>
+                            <li><a class='dropdown-item' href='/insta-projet/profile/add-profile-picture.php'>Photo Profil</a></li>
                             <li><a class='dropdown-item' href='/insta-projet/profile/ajouter-photos.php'>Ajouter photos</a></li>
                             <li><a class='dropdown-item' href="/insta-projet/process/deco.php">Déconnexion</a></li>
                         </ul>

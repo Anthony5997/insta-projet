@@ -17,7 +17,7 @@ include("partials/header.php");
       </div>
     </div>
     <div>
-        <p class="container sign-form ">Vous n'avez pas de compte? <a href="sign-in.php">Inscrivez-vous</a</p>
+        <p class="container sign-form ">Vous n'avez pas de compte? <a href="/insta-projet/sign-in.php">Inscrivez-vous</a</p>
     </div>
 </div>
 <?php

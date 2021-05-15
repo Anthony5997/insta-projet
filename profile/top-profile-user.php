@@ -14,15 +14,26 @@
                     Publication
                 </div>
                 <div class="col-sm-4">
-                    Follow
+                <span><?=$followManager->followerCounter($userVisited)['COUNT(id_user_follower)']?>  follow</span>
                 </div>
                 <div class="col-sm-4">
-                    abonnement
+                <span><?=$followManager->followingCounter($userVisited)['COUNT(id_user_followed)']?>  abonnement</span>
                 </div>
-                <div class="col-12">
+                <?php if($followStatus === false){?>
+                <div class="col-4">
                 <br>
-                    <button class=" col-sm-12 btn btn-primary">Follow</button>
+                    <form action="/insta-projet/profile/process/follow-process.php?mail=<?=$visitedMail?>" method="post">
+                        <button type="submit" class=" col-sm-12 btn btn-primary">Follow</button>
+                    </form>
                 </div>
+                    <?php }else{?>
+                <div class="col-4">
+                <br>
+                    <form action="/insta-projet/profile/process/follow-process.php?mail=<?=$visitedMail?>" method="post">
+                        <button type="submit" class=" col-sm-12  btn-danger">Unfollow</button>
+                    </form>
+                </div>
+                    <?php } ?>
             </div>
         </div>
     </div>

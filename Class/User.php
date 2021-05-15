@@ -6,9 +6,10 @@ class User{
     private int $id;
     private string $name;
     private string $pass;
-    private  string $email;
+    private string $email;
     private string $created_at;
-    private $profile_picture;
+    private string $profile_picture;
+    private bool $private_account;
 
     /*Methode*/
 
@@ -58,6 +59,10 @@ class User{
         return $this->profile_picture;
     }
 
+    public function getPrivate_account(){
+        return $this->private_account;
+    }
+
     /*SETTER*/ 
 
     public function setId(int $id){
@@ -86,5 +91,9 @@ class User{
 
     public function setProfile_picture($profile_picture){
         $this->profile_picture = $profile_picture;
+    }
+
+    public function setPrivate_account($private_account){
+        $this->private_account = $private_account;
     }
 }
