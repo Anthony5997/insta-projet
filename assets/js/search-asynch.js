@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded',()=>{
-    fetch('../profile/process/search-process.php')
+    fetch('/insta-projet/profile/process/search-process.php')
     .then((response)=>{
         console.log(response);
         return response.json();

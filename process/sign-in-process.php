@@ -8,6 +8,7 @@ if(isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['pass']) && !
     $userManager = new UserManager($bdd);
     if($userManager->userExist($user) === true){
         $userManager->createUser($user);
+        $_SESSION['userMail'] = $user->getEmail();
             header("Location: ../profile/profile.php?id=".$user->getId()."&message=Compte crée.");
         }else{
             header("Location: ../sign-up.php?message=L'utilisateur existe déjà.");

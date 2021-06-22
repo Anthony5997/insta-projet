@@ -91,10 +91,23 @@ class PictureManager
   }
 
   public function getAllPictures(){
-    $pictureStatement = $this->pdo->prepare("SELECT * FROM photos  ORDER BY photos.add_date 
+    $pictureStatement = $this->pdo->prepare("SELECT * FROM photos ORDER BY photos.add_date 
     DESC");;
     $pictureStatement->execute();
     return $allPictureUser = $pictureStatement->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  public function getAllPicturesFollowed($id){
+    $pictureStatement = $this->pdo->prepare(
+      "SELECT photos.*, follow.id_user_followed
+      FROM photos 
+      JOIN users
+      JOIN follow
+      ON id_user_follower = users.id
+      WHERE follow.id_user_follower = :id  AND photos.id_user = follow.id_user_followed
+      ORDER BY photos.add_date DESC");
+    $pictureStatement->bindValue("id" , $id);
+    $pictureStatement->execute();
+    return $pictureStatement->fetchAll(PDO::FETCH_ASSOC);
+  }
 }

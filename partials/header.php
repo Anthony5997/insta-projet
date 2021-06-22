@@ -12,5 +12,6 @@
     <title>instaPasGram</title>
 </head>
 <?php 
-include("navbar.php");
-?>
+include("navbar.php");?>
+<div class="user-list"></div>
+

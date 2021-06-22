@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <a class="navbar-brand topnav" href=<?= empty($_SESSION['user']) ? '#' : '/insta-projet/home.php' ?>>
+            <a class="navbar-brand topnav" href=<?= empty($_SESSION['user']) ? '#' : '/insta-projet/index.php' ?>>
                 <h6> <img src="https://img.icons8.com/fluent/40/000000/instagram-new.png" />Instapasgram</h6>
             </a>
             <div class="row">
@@ -16,9 +16,6 @@
                     <form class="d-flex">
                         <input class="form-control m-2" name="search-user" type="search" placeholder="Search" aria-label="Search" id="search-user">
                     </form>
-                    <div  class="row justify-content-center user-list">
-
-                    </div>
                     <li class='nav-item dropdown'>
                         <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
                             Salut <?= $_SESSION["user"]->getName() ?></a>

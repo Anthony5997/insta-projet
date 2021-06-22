@@ -33,8 +33,9 @@ class FollowManager{
     /*********CHECKFOLLOW **********/
 
     public function checkFollow(User $userFollower, User $userFollowed){
-        $followStatement = $this->pdo->prepare("SELECT follow.id_user_followed FROM follow WHERE id_user_follower = :id_user_follower");
+         $followStatement = $this->pdo->prepare("SELECT follow.id_user_follower, follow.id_user_followed FROM follow WHERE id_user_follower = :id_user_follower AND id_user_followed = :id_user_followed");
          $followStatement->bindValue(':id_user_follower', $userFollower->getId(),PDO::PARAM_INT);
+         $followStatement->bindValue(':id_user_followed', $userFollowed->getId(),PDO::PARAM_INT);
          $followStatement->execute();
         return $followStatement->fetch(PDO::FETCH_ASSOC);
     }

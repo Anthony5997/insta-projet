@@ -8,7 +8,7 @@ class User{
     private string $pass;
     private string $email;
     private string $created_at;
-    private string $profile_picture;
+    private $profile_picture;
     private bool $private_account;
 
     /*Methode*/

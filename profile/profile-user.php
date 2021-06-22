@@ -1,6 +1,9 @@
 <?php
 require("../Class/Autoload.php");
 session_start();
+if(!isset($_SESSION['user'])){
+  header("Location: /insta-projet/sign-up.php");
+}
 include("../partials/sql_connect.php");
 Autoloader::register();
 $visitedMail = $_GET['mail'];
@@ -14,6 +17,7 @@ $userVisitedInfo = $userManager->getUserByMail($visitedMail);
 $userVisited = new User($userVisitedInfo);
 $allPictures = $picturesManager->getPictureByUser($userVisited);
 $followStatus = $followManager->checkFollow($currentUser, $userVisited);
+var_dump($followStatus);
 if($currentUser->getEmail() === $visitedMail){
   header("Location: /insta-projet/profile/profile.php");
 }
@@ -31,9 +35,9 @@ include("top-profile-user.php");
   <?php foreach($allPictures as $picture){?>
   <?php 
   $picture = new Picture($picture);?>
-    <div class="col-sm-4 d-flex image-board">
+    <div class="col-md-6 col-sm-12 col-lg-4 d-flex divpictures">
             <a id="<?= $picture->getId()?>" data-popup-ref="imgPopup" class="a-img-txt modalCall">
-              <img id="<?= $picture->getId()?>" src="<?=$picture->getPhoto_link()?>">
+              <img class="pictures" id="<?= $picture->getId()?>" src="<?=$picture->getPhoto_link()?>">
               <span id="<?= $picture->getId()?>" class="a-txt c1 icon-like-comment"><img id="<?= $picture->getId()?>"  src="https://img.icons8.com/metro/26/ffffff/like.png"><img id="<?= $picture->getId()?>" src="https://img.icons8.com/material-rounded/24/ffffff/speech-bubble-with-dots.png"></span>
             </a>
           </div> 
@@ -58,8 +62,20 @@ include("top-profile-user.php");
           </div>
           <div class="col-4"> 
             <div class="modal-comment">
-              <img class="profil-picture-modal"src="">
-              <p class="p-modal"></p>
+              <div class="row">
+                <div class="col-6">
+                  <img class="profil-picture-modal"src="">
+                  <p class="p-modal"></p>
+                </div>
+                <div class="col-6">
+                  <div class="like-heart">
+                    <form class="align-self-end" method="post" action="/insta-projet/profile/process/likes-process.php">
+                        <input type="hidden" id="idPicture" name="idPicture" value="<?= $currentUser->getId();?>">
+                        <button class="btn btn-primary">❤️</button>
+                      </form>
+                  </div>
+                </div>
+              </div>
               <h1></h1>
               <div class="d-flex flex-column">
               <div class="form-comment form-control">
@@ -85,6 +101,6 @@ include("top-profile-user.php");
 </div>
 <!-- FIN MODAL -->
 <?php 
-include("../partials/footer.php");
 }
+include("../partials/footer.php");
 ?>

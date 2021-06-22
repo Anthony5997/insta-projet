@@ -1,6 +1,9 @@
 <?php
 require("../Class/Autoload.php");
 session_start();
+if(!isset($_SESSION['user'])){
+  header("Location: /insta-projet/sign-up.php");
+}
 include("../partials/sql_connect.php");
 Autoloader::register();
 $userManager = new UserManager($bdd);
@@ -16,14 +19,15 @@ include("top-profile.php");
 <div class="tableau">
   <h5> <img src="https://img.icons8.com/fluent-systems-regular/24/000000/rubiks-cube.png" /> PUBLICATIONS</h5>
 </div>
+<?php if(!empty($allPictures)){ ?>
 <div class="container container-padding">
   <div class="row">
     <?php foreach ($allPictures as $picture) { ?>
       <?php
       $picture = new Picture($picture); ?>
-      <div class="col-sm-4 d-flex image-board ">
+     <div class="col-md-6 col-sm-12 col-lg-4 d-flex divpictures">
         <a id="<?= $picture->getId() ?>" data-popup-ref="imgPopup" class="a-img-txt modalCall">
-          <img id="<?= $picture->getId() ?>" class="current-picture" src="<?= $picture->getPhoto_link() ?>">
+          <img id="<?= $picture->getId() ?>" class="current-picture pictures" src="<?= $picture->getPhoto_link() ?>">
           <span id="<?= $picture->getId() ?>" class="a-txt c1 icon-like-comment"><img id="<?= $picture->getId() ?>" src="https://img.icons8.com/metro/26/ffffff/like.png"><img id="<?= $picture->getId() ?>" src="https://img.icons8.com/material-rounded/24/ffffff/speech-bubble-with-dots.png"></span>
         </a>
       </div>
@@ -74,8 +78,8 @@ include("top-profile.php");
     </div>
   </div>
 </div>
-</div>
 <!-- FIN MODAL -->
 <?php
+}
 include("../partials/footer.php");
 ?>
