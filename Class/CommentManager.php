@@ -59,8 +59,9 @@ class CommentManager
     WHERE id_picture = :id_picture');
     $getAllCommentsBypicture->bindValue(':id_picture', $idPicture ,PDO::PARAM_INT);
     $getAllCommentsBypicture->execute();
-    
-    return $donneesCommentBypicture = $getAllCommentsBypicture->fetchAll(PDO::FETCH_ASSOC);
+    var_dump( $getAllCommentsBypicture->fetchAll(PDO::FETCH_ASSOC));
+    die();
+    return  $getAllCommentsBypicture->fetchAll(PDO::FETCH_ASSOC);
   }
 
   public function getCommentByUser(User $user){
@@ -78,7 +79,7 @@ class CommentManager
       return $commentsUser = $commentStatement->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public function getCommentById($id){
+  public function getCommentById(int $id){
     $pictureStatement = $this->pdo->prepare("SELECT * FROM comments WHERE id =:id");
     $pictureStatement->bindValue("id", $id);
     $pictureStatement->execute();
@@ -92,7 +93,7 @@ class CommentManager
     return $allPictureUser = $pictureStatement->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public function getCommentAndUserInfoByPicture($idPicture)
+  public function getCommentAndUserInfoByPicture(int $idPicture)
   {
     
     $getAllCommentsBypicture = $this->pdo->prepare('SELECT comments.*, users.name, users.email, users.profile_picture

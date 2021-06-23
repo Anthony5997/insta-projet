@@ -68,12 +68,7 @@ include("top-profile-user.php");
                   <p class="p-modal"></p>
                 </div>
                 <div class="col-6">
-                  <div class="like-heart">
-                    <form class="align-self-end" method="post" action="/insta-projet/profile/process/likes-process.php">
-                        <input type="hidden" id="idPicture" name="idPicture" value="<?= $currentUser->getId();?>">
-                        <button class="btn btn-primary">❤️</button>
-                      </form>
-                  </div>
+                  <button id="" class="btn btn-primary like-heart">❤️</button>
                 </div>
               </div>
               <h1></h1>
@@ -83,12 +78,12 @@ include("top-profile-user.php");
             
               </div>
                 <div class="form-comment d-flex ">
-                  <form class="form-control align-self-end form-modal" method="post" action="/insta-projet/profile/process/insert-comments.php?">
+                  <div class="form-control align-self-end form-modal">
                     <input class="form-control" id="content"type="text" name="content" placeholder="Laissez un commentaire">
                     <input type="hidden" id="id_user_comment" name="id_user_comment" value="<?= $currentUser->getId();?>">
                     <input class="id-dynamique" id="id_picture" type="hidden" name="id_picture" value="">
-                    <button class="btn btn-primary sendComment" >Posté</button>
-                  </form>
+                    <button class="btn btn-primary sendComment" onclick="SendMessage()">Posté</button>
+                  </div>
                 </div>
                 </div>
               </div>

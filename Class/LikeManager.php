@@ -12,7 +12,7 @@ class LikeManager{
     /********CREATE  *******/
 
     public function like(User $userLike, Picture $pictureLiked){
-        $followStatement = $this->pdo->prepare("INSERT INTO likes(id_user_follower,id_picture_liked) 
+        $followStatement = $this->pdo->prepare("INSERT INTO likes(id_user_liked, id_picture_liked) 
         VALUES(:id_user_like, :id_picture_liked)");
          $followStatement->bindValue(':id_user_like', $userLike->getId(),PDO::PARAM_INT);
          $followStatement->bindValue(':id_picture_liked', $pictureLiked->getId(), PDO::PARAM_INT);
@@ -23,7 +23,7 @@ class LikeManager{
     /********DELETE *******/
 
     public function unLike(User $userLike, Picture $pictureLiked){
-        $followStatement = $this->pdo->prepare("DELETE FROM likes  WHERE id_user_like = :id_user_like AND id_picture_liked = :id_picture_liked");
+        $followStatement = $this->pdo->prepare("DELETE FROM likes  WHERE id_user_liked = :id_user_like AND id_picture_liked = :id_picture_liked");
          $followStatement->bindValue(':id_user_like', $userLike->getId(),PDO::PARAM_INT);
          $followStatement->bindValue(':id_picture_liked', $pictureLiked->getId(),PDO::PARAM_INT);
          $followStatement->execute();
@@ -33,7 +33,7 @@ class LikeManager{
     /*********CHECKFOLLOW **********/
 
     public function checkLike(User $userLike, Picture $pictureLiked){
-         $followStatement = $this->pdo->prepare("SELECT likes.id_user_like, like.id_picture_liked FROM likes WHERE id_user_like = :id_user_like AND id_picture_liked = :id_picture_liked");
+         $followStatement = $this->pdo->prepare("SELECT * FROM likes WHERE id_user_liked = :id_user_like AND id_picture_liked = :id_picture_liked");
          $followStatement->bindValue(':id_user_like', $userLike->getId(),PDO::PARAM_INT);
          $followStatement->bindValue(':id_picture_liked', $pictureLiked->getId(),PDO::PARAM_INT);
          $followStatement->execute();
@@ -49,7 +49,7 @@ class LikeManager{
     }
 
     public function likeCounter(User $user){
-        $followStatement = $this->pdo->prepare("SELECT COUNT(id_user_like) FROM likes WHERE id_picture_liked = :id_picture_liked");
+        $followStatement = $this->pdo->prepare("SELECT COUNT(id_user_liked) FROM likes WHERE id_picture_liked = :id_picture_liked");
          $followStatement->bindValue(':id_picture_liked', $user->getId(),PDO::PARAM_INT);
          $followStatement->execute();
         return $followStatement->fetch(PDO::FETCH_ASSOC);

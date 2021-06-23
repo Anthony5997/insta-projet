@@ -13,51 +13,92 @@ modals.forEach(modal => {
             return Response.json();
         }).then((data)=>{
             console.log("control",data);
-
+            document.querySelector('.like-heart').setAttribute('id', data.picture.id ) 
             document.querySelector('.inner-picture').setAttribute('src', data.picture.photo_link);  
             document.querySelector('.profil-picture-modal').setAttribute('src', data.user.profile_picture);  
-            document.querySelector('.like-heart').setAttribute('action', "/insta-projet/profile/process/likes-process.php?mail="+data.user.email); 
-            document.querySelector('.form-modal').setAttribute('action', "/insta-projet/profile/process/insert-comments.php?mail="+data.user.email); 
             document.querySelector('.p-modal').innerHTML = data.user.name
-            console.log("control selector", document.querySelector('.id-dynamique').value = data.picture.id);
-            let commentZone =  document.querySelector(".comment-list");
-            commentZone.innerHTML = ""
+            console.log("control selector", data.picture.id);
+            document.querySelector('.id-dynamique').value = data.picture.id
+            console.log("IMPORTANT",data);
+             console.log("comment IMPORTANT", data.comment)
+          
             data.comment.forEach(com => {
-               commentZone.innerHTML += "<div class='comment-box'><span><a href="+"/insta-projet/profile/profile-user.php?mail="+com.email+"><img class='comment-profil-picture' src="+com.profile_picture+">  "+com.name+" :</a></span>"+"<p> "+com.content+"</p>"+"<p><i>"+com.comment_date+"<i></p></div>"
-           })
+                commentZone.innerHTML += "<div class='comment-box'><span><a href="+"/insta-projet/profile/profile-user.php?mail="+com.email+"><img class='comment-profil-picture' src="+com.profile_picture+">  "+com.name+" :</a></span>"+"<p> "+com.content+"</p>"+"<p><i>"+com.comment_date+"<i></p></div>"
+        })
         })
     })
 })
 
 
-/*
+let likeDiv = document.querySelector(".like-heart")
+likeDiv.addEventListener('click', function(e) {
+console.log("event", e.target);
 
-let boxMessage = document.querySelector("#display-comments"); // div de display
-let sendMessage = document.querySelector("#commentButton"); //Button submit
-let commentArea = document.querySelector("#comment-area"); //id du text area
-
-sendMessage.addEventListener('click', function(event){
-    event.preventDefault();
-
-    let formResfresh = new FormData()
-    formResfresh.append('comment-area', commentArea.value)
-    fetch('process/insert-comments.php', {
+let idPictures = likeDiv.getAttribute("id");
+    console.log("id pic js",idPictures);
+    let formDatas = new FormData();
+    formDatas.append('idPicture', idPictures);
+    fetch('/insta-projet/profile/process/likes-process.php', {
         method:'post',
-        body: formResfresh
-    }).then(()=>{
-        commentArea.value=""
-        refresh()
+        body: formDatas
+    }) .then((Response)=>{
+        return Response.text()
+    }).then((data)=>{
+        console.log(data)
     })
 })
 
-function refresh(){
+let sendMessage = document.querySelector(".sendComment");
+let commentZone =  document.querySelector(".comment-list");
 
-    fetch("process/get-picture.php").then((Response)=>{
-        return Response.text()
+
+
+    function SendMessage(){
+        console.log("JECOUTE");
+        let contentPost = document.querySelector("#content");
+        let idPicturePost = document.querySelector("#id_picture");
+        let idUserPost = document.querySelector("#id_user_comment");
+    
+        let formResfresh = new FormData()
+        formResfresh.append('content', contentPost.value)
+        formResfresh.append('id_picture', idPicturePost.value)
+        formResfresh.append('id_user_comment', idUserPost.value)
+        fetch('process/insert-comments.php', {
+            method:'post',
+            body: formResfresh
+        }).then(()=>{
+    
+           commentZone.innerHTML = ""
+           contentPost.value= ""
+            refresh()
+        })
+
+    }
+
+function refresh(){
+    let idPicturePost = document.querySelector("#id_picture");
+    console.log(idPicturePost.value, "YOLOOOOOOOOOOOOOOOOOOO");
+    let formId = new FormData()
+    formId.append('id', idPicturePost.value)
+    fetch("process/get-comment-process.php", {
+
+        method:'post',
+        body: formId
+
+    }).then((Response)=>{
+        return Response.json()
     }).then((data)=>{
-        boxMessage.innerHTML = data
+
+
+        data.forEach(com => {
+           commentZone.innerHTML += "<div class='comment-box'><span><a href="+"/insta-projet/profile/profile-user.php?mail="+com.email+"><img class='comment-profil-picture' src="+com.profile_picture+">  "+com.name+" :</a></span>"+"<p> "+com.content+"</p>"+"<p><i>"+com.comment_date+"<i></p></div>"
+       })
+   
+
+        console.log("TEST HERE", data)
+        //boxMessage.innerHTML = data
     }).catch((e)=>{
         
     })
 }
-*/
+

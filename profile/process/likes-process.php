@@ -3,25 +3,29 @@ require("../../Class/Autoload.php");
 session_start();
 require("../../partials/sql_connect.php");
 Autoloader::register();
-$visitedMail = $_GET['mail'];
-$pictureCliked = $_POST['idPicture'];
-$userManager = new UserManager($bdd);
-$pictureManager = new pictureManager($bdd);
-$likeManager = new LikeManager($bdd);
+if(isset($_POST['idPicture'])){
+    var_dump('$currentUser');
 
-$dataUser = $userManager->getUserByMail($_SESSION['userMail']);
-$currentUser = new User($dataUser);
-$_SESSION['user'] = $currentUser;
-$userVisitedInfo = $userManager->getUserByMail($visitedMail);
-$pictureLike = new Picture($pictureCliked);
+    $pictureCliked = $_POST['idPicture'];
 
-if( $likeManager->checkLike($currentUser, $pictureCliked) === false){
+    $userManager = new UserManager($bdd);
+    $likeManager = new LikeManager($bdd);
+    $pictureManager = new PictureManager($bdd);
+    $picture = new Picture($pictureManager->getPictureById($pictureCliked));
 
-    var_dump("DUMP DU CHECK SI Like", $likeManager->checkLike($currentUser, $pictureCliked));
-    $likeManager->like($currentUser, $pictureCliked);
-    header("Location: ../profile-user.php?message=Photo Liker&mail=".$visitedMail);
-}else{
-    var_dump("DUMP DU CHECK SI unlike", $likeManager->checkLike($currentUser, $pictureCliked));
-    $likeManager->unLike($currentUser, $pictureCliked);
-    header("Location: ../profile-user.php?message=Photo Unliker&mail=".$visitedMail);
+    $dataUser = $userManager->getUserByMail($_SESSION['userMail']);
+
+    $currentUser = new User($dataUser);
+    $_SESSION['user'] = $currentUser;
+    var_dump("check like after");
+    
+    if( $likeManager->checkLike($currentUser, $picture) === false){
+        
+        var_dump("like pas");
+        $likeManager->like($currentUser, $picture);
+    }else{
+        var_dump("déjà like delete");
+        $likeManager->unLike($currentUser, $picture);
+    }
+
 }

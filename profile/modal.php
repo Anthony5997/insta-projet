@@ -3,10 +3,11 @@ if(isset($_POST['id'])):
     require(__DIR__."/../Class/Autoload.php");
     Autoloader::register();
     include(__DIR__."/../partials/sql_connect.php");
+
     $manager = new PictureManager($bdd);
     $commentManager = new CommentManager($bdd);
-    $arrayPicture = $manager->getPictureById($_POST['id']);
-    $arrayComment = $commentManager->getCommentAndUserInfoByPicture($_POST['id']);
+    $arrayPicture = $manager->getPictureById(intval($_POST['id']));
+    $arrayComment = $commentManager->getCommentAndUserInfoByPicture(intval($_POST['id']));
     $userManager = new UserManager($bdd);
     $arrayUser = $userManager->getUserById(intval($arrayPicture['id_user']));
     if ($arrayPicture) {
