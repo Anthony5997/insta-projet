@@ -68,7 +68,7 @@ include("top-profile-user.php");
                   <p class="p-modal"></p>
                 </div>
                 <div class="col-6">
-                  <button id="" class="btn btn-primary like-heart">❤️</button>
+                  <div id="" class="like-heart">❤️</div>
                 </div>
               </div>
               <h1></h1>

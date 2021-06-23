@@ -9,11 +9,11 @@ Autoloader::register();
 $userManager = new UserManager($bdd);
 $picturesManager = new PictureManager($bdd);
 $dataUser = $userManager->getUserByMail($_SESSION['userMail']);
+$likeManager = new LikeManager($bdd);
 $currentUser = new User($dataUser);
 $allPictures = $picturesManager->getAllPicturesFollowed($currentUser->getId());
 $_SESSION['user'] = $currentUser;
 include("partials/header.php");
-var_dump($_SESSION);
 ?>
 <div class="container">
   <div class="row">
@@ -60,9 +60,9 @@ var_dump($_SESSION);
       $userPic = new User($dataUserPics);
       ?>
     <div class="col-sm-12 d-flex flex-column align-items-center image-board-home">
-                <div class="row">
-                  <img class=" col-6 profil-picture-modal" src="<?= $userPic->getProfile_picture();?>" alt="">
-                  <a href="/insta-projet/profile/profile-user.php?mail=<?=$userPic->getEmail();?>"class="col-6 mt-3"><?= $userPic->getName();?></a>
+                <div class="row m-3">
+                  <img class=" col-5 profil-picture-modal" src="<?= $userPic->getProfile_picture();?>" alt="">
+                  <a href="/insta-projet/profile/profile-user.php?mail=<?=$userPic->getEmail();?>"class="col-5 mt-3"><?= $userPic->getName();?></a>
                 </div>
                 <a id="<?= $pic->getId()?>" data-popup-ref="imgPopup" class="a-img-txt modalCall">
                   <img id="<?= $pic->getId()?>" class="pictures" src="<?=$pic->getPhoto_link()?>">
@@ -85,14 +85,19 @@ var_dump($_SESSION);
           <div class="col-7">
             <div class="modal-picture">
               <img  class="inner-picture" src="/insta-projet/assets/img/pic1.png">
-
-
             </div>
           </div>
           <div class="col-4"> 
             <div class="modal-comment">
-              <img class="profil-picture-modal"src="">
-              <p class="p-modal"></p>
+              <div class="row">
+                <div class="col-6">
+                  <img class="profil-picture-modal"src="">
+                  <p class="p-modal"></p>
+                </div>
+                <div class="col-6">
+                  <div id="" class="like-heart">❤️</div>
+                </div>
+              </div>
               <h1></h1>
               <div class="d-flex flex-column">
               <div class="form-comment form-control">
@@ -100,12 +105,12 @@ var_dump($_SESSION);
             
               </div>
                 <div class="form-comment d-flex ">
-                  <form class="form-control align-self-end form-modal" method="post" action="/insta-projet/profile/process/insert-comments.php?">
+                  <div class="form-control align-self-end form-modal">
                     <input class="form-control" id="content"type="text" name="content" placeholder="Laissez un commentaire">
                     <input type="hidden" id="id_user_comment" name="id_user_comment" value="<?= $currentUser->getId();?>">
                     <input class="id-dynamique" id="id_picture" type="hidden" name="id_picture" value="">
-                    <button class="btn btn-primary sendComment" >Posté</button>
-                  </form>
+                    <button class="btn btn-primary sendComment" onclick="SendMessage()">Posté</button>
+                  </div>
                 </div>
                 </div>
               </div>

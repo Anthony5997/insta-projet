@@ -48,10 +48,11 @@ class LikeManager{
         return $followStatement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function likeCounter(User $user){
+    public function likeCounter(Picture $picture){
         $followStatement = $this->pdo->prepare("SELECT COUNT(id_user_liked) FROM likes WHERE id_picture_liked = :id_picture_liked");
-         $followStatement->bindValue(':id_picture_liked', $user->getId(),PDO::PARAM_INT);
+         $followStatement->bindValue(':id_picture_liked', $picture->getId(),PDO::PARAM_INT);
          $followStatement->execute();
-        return $followStatement->fetch(PDO::FETCH_ASSOC);
+         $counter = $followStatement->fetch(PDO::FETCH_ASSOC);
+         return $counter['COUNT(id_user_liked)'][0];
     }
 }
